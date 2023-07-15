@@ -10,5 +10,4 @@ export declare class ProductController {
     findOne(id: number): Promise<Product>;
     update(id: number, updateProductDto: UpdateProductDto): Promise<import("typeorm").UpdateResult>;
     remove(id: number): Promise<import("typeorm").DeleteResult>;
-    updateProductQuantity(id: number, amount: number): Promise<import("typeorm").UpdateResult>;
 }

@@ -47,13 +47,4 @@ export class ProductController {
 	remove(@Param("id") id: number) {
 		return this.productService.remove(id);
 	}
-
-	@Put(":id/quantity")
-	@MessagePattern("updateProductQuantity")
-	updateProductQuantity(
-		@Param("id") id: number,
-		@Body("amount") amount: number
-	) {
-		return this.productService.updateProductQuantity(id, amount);
-	}
 }

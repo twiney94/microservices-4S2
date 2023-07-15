@@ -31,8 +31,4 @@ export class ProductService {
 	remove(id: number) {
 		return this.productRepository.delete(id);
 	}
-
-	updateProductQuantity(id: number, amount: number) {
-		return this.productRepository.increment({ id }, "quantity", amount);
-	}
 }

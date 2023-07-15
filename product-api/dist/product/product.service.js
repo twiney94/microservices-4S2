@@ -36,9 +36,6 @@ let ProductService = exports.ProductService = class ProductService {
     remove(id) {
         return this.productRepository.delete(id);
     }
-    updateProductQuantity(id, amount) {
-        return this.productRepository.increment({ id }, "quantity", amount);
-    }
 };
 exports.ProductService = ProductService = __decorate([
     (0, common_1.Injectable)(),

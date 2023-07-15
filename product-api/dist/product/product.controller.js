@@ -37,9 +37,6 @@ let ProductController = exports.ProductController = class ProductController {
     remove(id) {
         return this.productService.remove(id);
     }
-    updateProductQuantity(id, amount) {
-        return this.productService.updateProductQuantity(id, amount);
-    }
 };
 __decorate([
     (0, common_1.Post)(),
@@ -81,15 +78,6 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "remove", null);
-__decorate([
-    (0, common_1.Put)(":id/quantity"),
-    (0, microservices_1.MessagePattern)("updateProductQuantity"),
-    __param(0, (0, common_1.Param)("id")),
-    __param(1, (0, common_1.Body)("amount")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", void 0)
-], ProductController.prototype, "updateProductQuantity", null);
 exports.ProductController = ProductController = __decorate([
     (0, common_1.Controller)("products"),
     __metadata("design:paramtypes", [product_service_1.ProductService])
