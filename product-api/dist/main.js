@@ -7,9 +7,8 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const config = new swagger_1.DocumentBuilder()
         .setTitle("Product API")
-        .setDescription("Product API description")
+        .setDescription("This is the API for the product microservice")
         .setVersion("1.0")
-        .addTag("product")
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup("api", app, document);

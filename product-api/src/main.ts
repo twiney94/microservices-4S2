@@ -7,13 +7,12 @@ async function bootstrap() {
 
 	const config = new DocumentBuilder()
 		.setTitle("Product API")
-		.setDescription("Product API description")
+		.setDescription("This is the API for the product microservice")
 		.setVersion("1.0")
-		.addTag("product")
 		.build();
 
 	const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("api", app, document);
+	SwaggerModule.setup("api", app, document);
 
 	await app.listen(3000);
 }
