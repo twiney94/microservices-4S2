@@ -1,40 +1,58 @@
-import { Controller } from "@nestjs/common";
+import {
+	Controller,
+	Get,
+	Post,
+	Body,
+	Param,
+	Put,
+	Delete,
+} from "@nestjs/common";
 import { MessagePattern, Payload } from "@nestjs/microservices";
 import { ProductService } from "./product.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
+import { FindOneOptions } from "typeorm";
 
-@Controller()
+@Controller("products") // Specify the base path for the routes
 export class ProductController {
 	constructor(private readonly productService: ProductService) {}
 
+	@Post()
 	@MessagePattern("createProduct")
 	create(@Payload() createProductDto: CreateProductDto) {
 		return this.productService.create(createProductDto);
 	}
 
+	@Get()
 	@MessagePattern("findAllProduct")
 	findAll() {
 		return this.productService.findAll();
 	}
 
+	@Get(":id")
 	@MessagePattern("findOneProduct")
-	findOne(@Payload() id: number) {
+	findOne(@Param("id") id: FindOneOptions<number>) {
 		return this.productService.findOne(id);
 	}
 
+	@Put(":id")
 	@MessagePattern("updateProduct")
-	update(@Payload() updateProductDto: UpdateProductDto) {
-		return this.productService.update(updateProductDto.id, updateProductDto);
+	update(@Param("id") id: number, @Body() updateProductDto: UpdateProductDto) {
+		return this.productService.update(id, updateProductDto);
 	}
 
+	@Delete(":id")
 	@MessagePattern("removeProduct")
-	remove(@Payload() id: number) {
+	remove(@Param("id") id: number) {
 		return this.productService.remove(id);
 	}
 
+	@Put(":id/quantity")
 	@MessagePattern("updateProductQuantity")
-	updateProductQuantity(@Payload() data: { id: number; amount: number }) {
-		return this.productService.updateProductQuantity(data.id, data.amount);
+	updateProductQuantity(
+		@Param("id") id: number,
+		@Body("amount") amount: number
+	) {
+		return this.productService.updateProductQuantity(id, amount);
 	}
 }

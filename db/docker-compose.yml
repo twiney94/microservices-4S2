@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: product_db
+      MYSQL_USER: root1234
+      MYSQL_PASSWORD: root1234
+    volumes:
+      - data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+  data:
+    driver: local
