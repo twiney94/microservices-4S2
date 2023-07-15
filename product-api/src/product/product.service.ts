@@ -21,7 +21,7 @@ export class ProductService {
 	}
 
 	findOne(id: number) {
-		return this.productRepository.findOneBy({ id }); // Provide the selection condition for the primary key (id)
+		return this.productRepository.findOneBy({ id }); // TODO: ID is actually mutable
 	}
 
 	update(id: number, updateProductDto: UpdateProductDto) {
