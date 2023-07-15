@@ -1,12 +1,22 @@
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class Product {
-	static _OPENAPI_METADATA_FACTORY() {
-		return {
-			id: { required: true, type: () => Number },
-			name: { required: true, type: () => String },
-			description: { required: true, type: () => String },
-			price: { required: true, type: () => Number },
-			quantity: { required: true, type: () => Number },
-			category: { required: true, type: () => String },
-		};
-	}
+	@PrimaryGeneratedColumn()
+	id: number;
+
+	@Column()
+	name: string;
+
+	@Column()
+	description: string;
+
+	@Column()
+	price: number;
+
+	@Column()
+	quantity: number;
+
+	@Column()
+	category: string;
 }

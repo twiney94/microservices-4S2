@@ -28,7 +28,7 @@ let ProductService = exports.ProductService = class ProductService {
         return this.productRepository.find();
     }
     findOne(id) {
-        return this.productRepository.findOne(id);
+        return this.productRepository.findOneBy({ id });
     }
     update(id, updateProductDto) {
         return this.productRepository.update(id, updateProductDto);

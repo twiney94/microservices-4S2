@@ -9,7 +9,7 @@ import { Repository, FindOneOptions } from "typeorm";
 export class ProductService {
 	constructor(
 		@InjectRepository(Product)
-		private productRepository: Repository<Product>
+		private readonly productRepository: Repository<Product>
 	) {}
 
 	create(createProductDto: CreateProductDto) {
@@ -20,8 +20,8 @@ export class ProductService {
 		return this.productRepository.find();
 	}
 
-	findOne(id: FindOneOptions<number>) {
-		return this.productRepository.findOne(id);
+	findOne(id: number) {
+		return this.productRepository.findOneBy({ id }); // Provide the selection condition for the primary key (id)
 	}
 
 	update(id: number, updateProductDto: UpdateProductDto) {

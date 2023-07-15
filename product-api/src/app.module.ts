@@ -21,4 +21,3 @@ import { Product } from "./product/entities/product.entity";
 	providers: [],
 })
 export class AppModule {}
-

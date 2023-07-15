@@ -4,28 +4,24 @@ import { CreateProductDto } from "./create-product.dto";
 export class UpdateProductDto extends PartialType(CreateProductDto) {
 	static _OPENAPI_METADATA_FACTORY() {
 		return {
-			id: {
-				required: true,
-				type: () => Number,
-			},
 			name: {
-				required: true,
+				required: false,
 				type: () => String,
 			},
 			description: {
-				required: true,
+				required: false,
 				type: () => String,
 			},
 			price: {
-				required: true,
+				required: false,
 				type: () => Number,
 			},
 			quantity: {
-				required: true,
+				required: false,
 				type: () => Number,
 			},
 			category: {
-				required: true,
+				required: false,
 				type: () => String,
 			},
 		};

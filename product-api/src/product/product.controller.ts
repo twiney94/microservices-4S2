@@ -12,6 +12,7 @@ import { ProductService } from "./product.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
 import { FindOneOptions } from "typeorm";
+import { Product } from "./entities/product.entity";
 
 @Controller("products") // Specify the base path for the routes
 export class ProductController {
@@ -31,7 +32,7 @@ export class ProductController {
 
 	@Get(":id")
 	@MessagePattern("findOneProduct")
-	findOne(@Param("id") id: FindOneOptions<number>) {
+	findOne(@Param("id") id: number) {
 		return this.productService.findOne(id);
 	}
 

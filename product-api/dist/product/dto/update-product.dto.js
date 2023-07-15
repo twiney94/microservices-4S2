@@ -6,28 +6,24 @@ const create_product_dto_1 = require("./create-product.dto");
 class UpdateProductDto extends (0, mapped_types_1.PartialType)(create_product_dto_1.CreateProductDto) {
     static _OPENAPI_METADATA_FACTORY() {
         return {
-            id: {
-                required: true,
-                type: () => Number,
-            },
             name: {
-                required: true,
+                required: false,
                 type: () => String,
             },
             description: {
-                required: true,
+                required: false,
                 type: () => String,
             },
             price: {
-                required: true,
+                required: false,
                 type: () => Number,
             },
             quantity: {
-                required: true,
+                required: false,
                 type: () => Number,
             },
             category: {
-                required: true,
+                required: false,
                 type: () => String,
             },
         };
