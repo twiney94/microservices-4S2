@@ -1,9 +1,23 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ProductModule } from './product/product.module';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mariadb',
+      host: 'localhost',
+      port: 3306,
+      database: 'product_db',
+      username: 'root',
+      password: 'root1234',
+      entities: ['dist/**/*.entity.{ts,js}'],
+      synchronize: true,
+    }),
+    ProductModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

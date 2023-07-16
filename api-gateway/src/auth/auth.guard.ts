@@ -4,7 +4,6 @@ import {
   ExecutionContext,
   HttpStatus,
   UnauthorizedException,
-  Inject,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { ValidateResponse } from './auth.pb';
@@ -18,10 +17,9 @@ declare module 'express' {
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  @Inject(AuthService)
-  public readonly service: AuthService;
+  constructor(private readonly authService: AuthService) {}
 
-  public async canActivate(ctx: ExecutionContext): Promise<boolean> | never {
+  public async canActivate(ctx: ExecutionContext): Promise<boolean> {
     const req: Request = ctx.switchToHttp().getRequest();
     const authorization: string = req.headers['authorization'];
 
@@ -37,9 +35,8 @@ export class AuthGuard implements CanActivate {
 
     const token: string = bearer[1];
 
-    const { status, userId }: ValidateResponse = await this.service.validate(
-      token,
-    );
+    const { status, userId }: ValidateResponse =
+      await this.authService.validate(token);
 
     req.user = userId;
 
