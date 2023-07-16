@@ -16,7 +16,7 @@ export class Product extends BaseEntity {
   public name!: string;
 
   @Column({ type: 'varchar' })
-  public sku!: string;
+  public ref!: string;
 
   @Column({ type: 'integer' })
   public stock!: number;
