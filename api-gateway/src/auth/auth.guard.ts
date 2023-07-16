@@ -10,6 +10,12 @@ import { Request } from 'express';
 import { ValidateResponse } from './auth.pb';
 import { AuthService } from './auth.service';
 
+declare module 'express' {
+  interface Request {
+    user?: any;
+  }
+}
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   @Inject(AuthService)
