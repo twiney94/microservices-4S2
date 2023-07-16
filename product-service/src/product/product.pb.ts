@@ -17,6 +17,7 @@ export interface CreateProductResponse {
   id: number;
 }
 
+
 export interface FindOneData {
   id: number;
   name: string;
