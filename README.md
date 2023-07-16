@@ -71,7 +71,7 @@ BASE URI : http://localhost:3000
 #### Log In
 
 ```http
-  PUT /auth/login
+  POST /auth/login
 ```
 
 | Parameter | Type     | Description                       |
