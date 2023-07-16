@@ -42,7 +42,7 @@ export class ProductService {
     const product: Product = new Product();
 
     product.name = payload.name;
-    product.sku = payload.sku;
+    product.ref = payload.ref;
     product.stock = payload.stock;
     product.price = payload.price;
 
