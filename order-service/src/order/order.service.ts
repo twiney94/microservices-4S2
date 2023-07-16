@@ -39,7 +39,7 @@ export class OrderService implements OnModuleInit {
     } else if (product.data.stock < data.quantity) {
       return {
         id: null,
-        error: ['Stock too less'],
+        error: ['Stock too low'],
         status: HttpStatus.CONFLICT,
       };
     }

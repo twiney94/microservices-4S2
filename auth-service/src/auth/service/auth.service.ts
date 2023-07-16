@@ -75,6 +75,8 @@ export class AuthService {
   }: ValidateRequestDto): Promise<ValidateResponse> {
     const decoded: Auth = await this.jwtService.verify(token);
 
+    // console.log('decoded: ' + JSON.stringify(decoded));
+
     if (!decoded) {
       return {
         status: HttpStatus.FORBIDDEN,

@@ -29,7 +29,4 @@ export class CreateProductRequestDto implements CreateProductRequest {
 export class DecreaseStockRequestDto implements DecreaseStockRequest {
   @IsNumber({ allowInfinity: false, allowNaN: false })
   public readonly id: number;
-
-  @IsNumber({ allowInfinity: false, allowNaN: false })
-  public readonly orderId: number;
 }

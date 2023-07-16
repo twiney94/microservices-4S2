@@ -53,8 +53,8 @@ export class ProductService {
 
   public async decreaseStock({
     id,
-    orderId,
   }: DecreaseStockRequestDto): Promise<DecreaseStockResponse> {
+    console.log('decreasing stock');
     const product: Product = await this.repository.findOne({
       select: ['id', 'stock'],
       where: { id },
@@ -66,19 +66,7 @@ export class ProductService {
       return { error: ['Stock too low'], status: HttpStatus.CONFLICT };
     }
 
-    const isAlreadyDecreased: number = await this.decreaseLogRepository.count({
-      where: { orderId },
-    });
-
-    if (isAlreadyDecreased) {
-      return {
-        error: ['Stock already decreased'],
-        status: HttpStatus.CONFLICT,
-      };
-    }
-
     await this.repository.update(product.id, { stock: product.stock - 1 });
-    await this.decreaseLogRepository.insert({ product, orderId });
 
     return { error: null, status: HttpStatus.OK };
   }
