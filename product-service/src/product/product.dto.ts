@@ -17,7 +17,7 @@ export class CreateProductRequestDto implements CreateProductRequest {
 
   @IsString()
   @IsNotEmpty()
-  public readonly ref: string;
+  public readonly sku: string;
 
   @IsNumber({ allowInfinity: false, allowNaN: false })
   public readonly stock: number;
