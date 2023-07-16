@@ -6,7 +6,7 @@ export const protobufPackage = "product";
 
 export interface CreateProductRequest {
   name: string;
-  ref: string;
+  sku: string;
   stock: number;
   price: number;
 }
@@ -17,11 +17,10 @@ export interface CreateProductResponse {
   id: number;
 }
 
-
 export interface FindOneData {
   id: number;
   name: string;
-  ref: string;
+  sku: string;
   stock: number;
   price: number;
 }
