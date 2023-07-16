@@ -8,8 +8,7 @@ service OrderService {
 
 message CreateOrderRequest {
     int32 productId = 1;
-    int32 quantity = 2;
-    int32 userId = 3;
+    int32 userId = 2;
 }
 
 message CreateOrderResponse {
