@@ -8,9 +8,35 @@ services:
       MYSQL_USER: root1234
       MYSQL_PASSWORD: root1234
     volumes:
-      - data:/var/lib/mysql
+      - product:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  db_auth:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: auth_db
+      MYSQL_USER: root1234
+      MYSQL_PASSWORD: root1234
+    volumes:
+      - auth:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  db_order:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: order_db
+      MYSQL_USER: root1234
+      MYSQL_PASSWORD: root1234
+    volumes:
+      - order:/var/lib/mysql
     ports:
       - "3306:3306"
 volumes:
-  data:
+  product:
+    driver: local
+  auth:
+    driver: local
+  order:
     driver: local
