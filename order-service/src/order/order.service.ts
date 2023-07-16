@@ -36,7 +36,7 @@ export class OrderService implements OnModuleInit {
 
     if (product.status >= HttpStatus.NOT_FOUND) {
       return { id: null, error: ['Product not found'], status: product.status };
-    } else if (product.data.stock < data.quantity) {
+    } else if (product.data.stock == 0) {
       return {
         id: null,
         error: ['Stock too low'],
