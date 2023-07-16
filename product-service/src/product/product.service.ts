@@ -54,7 +54,6 @@ export class ProductService {
   public async decreaseStock({
     id,
   }: DecreaseStockRequestDto): Promise<DecreaseStockResponse> {
-    console.log('decreasing stock');
     const product: Product = await this.repository.findOne({
       select: ['id', 'stock'],
       where: { id },
